@@ -7,11 +7,11 @@
     },
     "servers": [
         {
-            "url": "https://your-function-url.cloudfunctions.net/uploadfile"
+            "url": "https://us-central1-ultra-task-432915-q4.cloudfunctions.net"
         }
     ],
     "paths": {
-        "/uploadfile": {
+        "/UPLOADFILES": {
             "post": {
                 "summary": "Upload a file to Google Cloud Storage",
                 "description": "Upload a file to Google Cloud Storage",
@@ -38,6 +38,64 @@
                     },
                     "400": {
                         "description": "Invalid request"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    }
+                }
+            }
+        },
+        "/RAGQUERY": {
+            "post": {
+                "summary": "Process RAG query with files",
+                "description": "Handles a RAG query that includes a question and references to files stored in Google Cloud Storage.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "files": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "description": "File paths or URLs to be processed."
+                                        },
+                                        "description": "An array of file paths or URLs."
+                                    },
+                                    "question": {
+                                        "type": "string",
+                                        "description": "The question related to the files that needs processing."
+                                    }
+                                },
+                                "required": [
+                                    "files",
+                                    "question"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-api-key",
+                        "description": "API Key for authorization",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Query processed successfully"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
                     },
                     "405": {
                         "description": "Method not allowed"
