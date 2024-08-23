@@ -24,7 +24,12 @@
                         "name": "file",
                         "description": "File to upload",
                         "required": true,
-                        "type": "file"
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "file"
+                            }
+                        }
                     }
                 ],
                 "responses": {
