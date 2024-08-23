@@ -20,6 +20,16 @@
                 ],
                 "parameters": [
                     {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Bearer token for authorization",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "Bearer <token>"
+                        }
+                    },
+                    {
                         "in": "formData",
                         "name": "file",
                         "description": "File to upload",
@@ -38,6 +48,9 @@
                     },
                     "400": {
                         "description": "Invalid request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
                     },
                     "405": {
                         "description": "Method not allowed"
@@ -69,7 +82,6 @@
                                     }
                                 },
                                 "required": [
-                                    "files",
                                     "question"
                                 ]
                             }
@@ -79,11 +91,12 @@
                 "parameters": [
                     {
                         "in": "header",
-                        "name": "x-api-key",
-                        "description": "API Key for authorization",
+                        "name": "Authorization",
+                        "description": "Bearer token for authorization",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "Bearer <token>"
                         }
                     }
                 ],
