@@ -59,7 +59,8 @@ def query_with_docs(request):
         if not file_names:
 
             blobs = list(bucket.list_blobs())
-
+            if not blobs:
+                return 'No files found in bucket', 400
             for blob in blobs:
                 local_path = os.path.join(temp_dir, blob.name)
                 blob.download_to_filename(local_path)
