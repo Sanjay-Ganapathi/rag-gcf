@@ -10,6 +10,20 @@
             "url": "https://us-central1-ultra-task-432915-q4.cloudfunctions.net"
         }
     ],
+    "components": {
+        "securitySchemes": {
+            "BearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    },
+    "security": [
+        {
+            "BearerAuth": []
+        }
+    ],
     "paths": {
         "/UPLOADFILES": {
             "post": {
@@ -19,16 +33,6 @@
                     "multipart/form-data"
                 ],
                 "parameters": [
-                    {
-                        "in": "header",
-                        "name": "Authorization",
-                        "description": "Bearer token for authorization",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "example": "Bearer <token>"
-                        }
-                    },
                     {
                         "in": "formData",
                         "name": "file",

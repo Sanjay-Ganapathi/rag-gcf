@@ -10,6 +10,9 @@ storage_client = storage.Client()
 
 @functions_framework.http
 def uploadfile(request):
+
+    print(request.headers)
+
     if request.method == "OPTIONS":
         headers = {
             "Access-Control-Allow-Origin": "*",
