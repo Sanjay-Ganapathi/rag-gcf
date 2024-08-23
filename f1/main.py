@@ -1,7 +1,7 @@
 import functions_framework
 import os
 from google.cloud import storage
-from flask import Flask, jsonify, request
+from flask import jsonify
 from dotenv import load_dotenv
 load_dotenv()
 

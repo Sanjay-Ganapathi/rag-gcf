@@ -1,0 +1,9 @@
+langchain
+langchain_openai
+flask
+functions-framework
+llama-index
+llama-index-embeddings-langchain
+python-dotenv
+llama-index-llms-azure-openai
+llama-index-readers-gcs

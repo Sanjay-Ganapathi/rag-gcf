@@ -161,5 +161,6 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 f1/key.json
+f2/key.json
 f1/env
 f1/env.yaml
