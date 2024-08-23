@@ -19,6 +19,22 @@ storage_client = storage.Client()
 @functions_framework.http
 def query_with_docs(request):
 
+    if request.method == "OPTIONS":
+
+        headers = {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "POST",
+            "Access-Control-Allow-Headers": "Authorization, Content-Type",
+            "Access-Control-Max-Age": "3600",
+            "Access-Control-Allow-Credentials": "true",
+        }
+        return ("", 204, headers)
+
+    headers = {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": "true",
+    }
+
     if request.method != 'POST':
         return 'Only POST requests are accepted', 405
 
@@ -80,4 +96,4 @@ def query_with_docs(request):
         index = VectorStoreIndex.from_documents(docs, embed_model=embed_model)
         query_engine = index.as_query_engine()
         response = query_engine.query(question)
-        return response.response
+        return response.response, 200, headers
