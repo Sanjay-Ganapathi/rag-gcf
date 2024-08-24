@@ -162,5 +162,7 @@ cython_debug/
 #.idea/
 f1/key.json
 f2/key.json
-f1/env
-f1/env.yaml
+f1/.env
+f1/.env.yaml
+f2/.env
+f2/.env.yaml
